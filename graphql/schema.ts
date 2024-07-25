@@ -24,6 +24,7 @@ export const typeDefs = gql`
   }
 
   input TradingPairFilterInput {
+    tradingPair: String
     DEX: String
     minPrice: Float
     maxPrice: Float

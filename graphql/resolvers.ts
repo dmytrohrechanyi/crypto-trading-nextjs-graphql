@@ -10,7 +10,14 @@ export const resolvers = {
       let filteredPairs = mockTradingPairsData;
 
       if (filter) {
-        const { DEX, minPrice, maxPrice } = filter;
+        const { tradingPair, DEX, minPrice, maxPrice } = filter;
+        if (tradingPair && tradingPair.split('-').length === 2) {
+          const [base, quote] = tradingPair.split('-');
+          filteredPairs = filteredPairs.filter(
+            (pair) => pair.baseCurrency === base && pair.quoteCurrency === quote
+          );
+        }
+
         if (DEX) {
           filteredPairs = filteredPairs.filter((pair) => pair.DEX === DEX);
         }
