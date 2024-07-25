@@ -60,7 +60,8 @@ export const resolvers = {
       { input }: { input: { userPreferences: string[] } }
     ) => {
       const { userPreferences } = input;
-      for (const preference of userPreferences) {
+      for (const userPreference of userPreferences) {
+        const preference = userPreference.trim();
         if (preference.split('-').length === 1) {
           if (!isValidSymbol(preference)) {
             throw new Error(`Invalid cryptocurrency symbol: ${preference}`);

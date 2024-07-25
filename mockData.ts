@@ -76,7 +76,7 @@ export const mockCryptocurrencyData = [
 export const mockTradingPairsData = [
   {
     baseCurrency: 'BTC',
-    quoteCurrency: 'USDT',
+    quoteCurrency: 'SOL',
     price: 30000,
     volume: 10000,
     liquidity: 50000,
@@ -84,7 +84,7 @@ export const mockTradingPairsData = [
   },
   {
     baseCurrency: 'ETH',
-    quoteCurrency: 'USDT',
+    quoteCurrency: 'LTC',
     price: 2000,
     volume: 8000,
     liquidity: 40000,
@@ -92,15 +92,15 @@ export const mockTradingPairsData = [
   },
   {
     baseCurrency: 'BNB',
-    quoteCurrency: 'USDT',
+    quoteCurrency: 'ETH',
     price: 300,
     volume: 5000,
     liquidity: 25000,
     DEX: 'DEX1',
   },
   {
-    baseCurrency: 'XRP',
-    quoteCurrency: 'USDT',
+    baseCurrency: 'LTC',
+    quoteCurrency: 'BTC',
     price: 0.5,
     volume: 15000,
     liquidity: 7000,
@@ -108,7 +108,7 @@ export const mockTradingPairsData = [
   },
   {
     baseCurrency: 'LTC',
-    quoteCurrency: 'USDT',
+    quoteCurrency: 'BNB',
     price: 150,
     volume: 2000,
     liquidity: 10000,
@@ -116,7 +116,7 @@ export const mockTradingPairsData = [
   },
   {
     baseCurrency: 'SOL',
-    quoteCurrency: 'USDT',
+    quoteCurrency: 'BNB',
     price: 30,
     volume: 3000,
     liquidity: 15000,
@@ -124,10 +124,18 @@ export const mockTradingPairsData = [
   },
   {
     baseCurrency: 'ETH',
-    quoteCurrency: 'BTC',
+    quoteCurrency: 'XRP',
     price: 0.0667,
     volume: 6000,
     liquidity: 20000,
     DEX: 'DEX5',
+  },
+  {
+    baseCurrency: 'SOL',
+    quoteCurrency: 'ETH',
+    price: 300,
+    volume: 5000,
+    liquidity: 25000,
+    DEX: 'DEX1',
   },
 ];
