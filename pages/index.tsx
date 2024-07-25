@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import Link from 'next/link';
 import type { Cryptocurrency } from '@/types';
 
 const GET_CRYPTOCURRENCIES = gql`
@@ -22,12 +23,14 @@ export default function Home() {
   const { loading, error, data } = useQuery(GET_CRYPTOCURRENCIES);
 
   return (
-    <main className="min-h-screen p-12 flex flex-col justify-center items-center">
+    <main className="min-h-screen p-12 flex flex-col justify-center items-center space-y-8">
+      <Link href="/trading-pairs">Go to Trading Pairs</Link>
+      <Link href="/preferences">Go to Preferences</Link>
       {loading && <p>Loading...</p>}
       {error && <p>Fetching failed.</p>}
       {data && (
         <>
-          <h1 className="text-5xl text-center mb-12">Cryptocurrencies</h1>
+          <h1 className="text-5xl text-center">Cryptocurrencies</h1>
           <div className="flex gap-8 justify-center">
             {data.cryptocurrencies.map(
               ({

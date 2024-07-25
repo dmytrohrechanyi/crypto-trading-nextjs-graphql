@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { gql, useQuery } from '@apollo/client';
 import type { TradingPair } from '@/types';
 
@@ -18,12 +19,13 @@ export default function TradingPairs() {
   const { loading, error, data } = useQuery(GET_TRADING_PAIRS);
 
   return (
-    <main className="min-h-screen p-12 flex flex-col justify-center items-center">
+    <main className="min-h-screen p-12 flex flex-col justify-center items-center space-y-8">
+      <Link href="/">Go to Home</Link>
       {loading && <p>Loading...</p>}
       {error && <p>Fetching failed.</p>}
       {data && (
         <>
-          <h1 className="text-5xl text-center mb-12">Trading Pairs</h1>
+          <h1 className="text-5xl text-center">Trading Pairs</h1>
           <div className="flex gap-8 justify-center">
             {data.tradingPairs.map(
               (

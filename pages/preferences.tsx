@@ -1,5 +1,6 @@
-import { gql, useMutation } from '@apollo/client';
 import { useState } from 'react';
+import Link from 'next/link';
+import { gql, useMutation } from '@apollo/client';
 
 const SAVE_USER_PREFERENCES = gql`
   mutation SaveUserPreferences($preferences: [String!]!) {
@@ -16,8 +17,9 @@ export default function Preferences() {
   };
 
   return (
-    <main className="min-h-screen p-12 flex flex-col justify-center items-center">
-      <h1 className="text-5xl text-center mb-12">User Preferences</h1>
+    <main className="min-h-screen p-12 flex flex-col justify-center items-center space-y-8">
+      <Link href="/">Go to Home</Link>
+      <h1 className="text-5xl text-center">User Preferences</h1>
       <div className="flex space-x-4">
         <input
           type="text"
