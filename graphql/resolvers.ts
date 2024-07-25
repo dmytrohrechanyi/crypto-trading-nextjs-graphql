@@ -6,7 +6,30 @@ let userPreferences: string[] = [];
 export const resolvers = {
   Query: {
     cryptocurrencies: () => mockCryptocurrencyData,
-    tradingPairs: () => mockTradingPairsData,
+    tradingPairs: (_: any, { filter }: { filter: any }) => {
+      let filteredPairs = mockTradingPairsData;
+
+      if (filter) {
+        const { DEX, minPrice, maxPrice } = filter;
+        if (DEX) {
+          filteredPairs = filteredPairs.filter((pair) => pair.DEX === DEX);
+        }
+
+        if (minPrice !== undefined) {
+          filteredPairs = filteredPairs.filter(
+            (pair) => pair.price >= minPrice
+          );
+        }
+
+        if (maxPrice !== undefined) {
+          filteredPairs = filteredPairs.filter(
+            (pair) => pair.price <= maxPrice
+          );
+        }
+      }
+
+      return filteredPairs;
+    },
   },
   Mutation: {
     saveUserPreferences: (

@@ -23,9 +23,15 @@ export const typeDefs = gql`
     DEX: String!
   }
 
+  input TradingPairFilterInput {
+    DEX: String
+    minPrice: Float
+    maxPrice: Float
+  }
+
   type Query {
     cryptocurrencies: [Cryptocurrency!]!
-    tradingPairs: [TradingPair!]!
+    tradingPairs(filter: TradingPairFilterInput): [TradingPair!]!
   }
 
   type Mutation {
