@@ -72,3 +72,62 @@ export const mockCryptocurrencyData = [
     dexList: ['DEX4', 'DEX8'],
   },
 ];
+
+export const mockTradingPairsData = [
+  {
+    baseCurrency: 'BTC',
+    quoteCurrency: 'USDT',
+    price: 30000,
+    volume: 10000,
+    liquidity: 50000,
+    DEX: 'DEX1',
+  },
+  {
+    baseCurrency: 'ETH',
+    quoteCurrency: 'USDT',
+    price: 2000,
+    volume: 8000,
+    liquidity: 40000,
+    DEX: 'DEX3',
+  },
+  {
+    baseCurrency: 'BNB',
+    quoteCurrency: 'USDT',
+    price: 300,
+    volume: 5000,
+    liquidity: 25000,
+    DEX: 'DEX1',
+  },
+  {
+    baseCurrency: 'XRP',
+    quoteCurrency: 'USDT',
+    price: 0.5,
+    volume: 15000,
+    liquidity: 7000,
+    DEX: 'DEX2',
+  },
+  {
+    baseCurrency: 'LTC',
+    quoteCurrency: 'USDT',
+    price: 150,
+    volume: 2000,
+    liquidity: 10000,
+    DEX: 'DEX3',
+  },
+  {
+    baseCurrency: 'SOL',
+    quoteCurrency: 'USDT',
+    price: 30,
+    volume: 3000,
+    liquidity: 15000,
+    DEX: 'DEX4',
+  },
+  {
+    baseCurrency: 'ETH',
+    quoteCurrency: 'BTC',
+    price: 0.0667,
+    volume: 6000,
+    liquidity: 20000,
+    DEX: 'DEX5',
+  },
+];

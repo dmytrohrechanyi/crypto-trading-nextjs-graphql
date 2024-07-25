@@ -14,7 +14,17 @@ export const typeDefs = gql`
     dexList: [String!]!
   }
 
+  type TradingPair {
+    baseCurrency: String!
+    quoteCurrency: String!
+    price: Float!
+    volume: Float!
+    liquidity: Float!
+    DEX: String!
+  }
+
   type Query {
     cryptocurrencies: [Cryptocurrency!]!
+    tradingPairs: [TradingPair!]!
   }
 `;
