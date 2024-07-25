@@ -6,6 +6,9 @@ import { resolvers } from '../../graphql/resolvers';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  subscriptions: {
+    path: '/api/graphql',
+  },
 });
 
 export default startServerAndCreateNextHandler(server);

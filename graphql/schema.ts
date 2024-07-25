@@ -27,4 +27,8 @@ export const typeDefs = gql`
     cryptocurrencies: [Cryptocurrency!]!
     tradingPairs: [TradingPair!]!
   }
+
+  type Subscription {
+    priceUpdated: Cryptocurrency
+  }
 `;
