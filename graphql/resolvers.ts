@@ -1,9 +1,21 @@
 import { pubsub } from './pubsub';
 import { mockCryptocurrencyData, mockTradingPairsData } from '../mockData';
 
-const userPreferences = {
+const inMemoryUserPreferences: {
+  cryptocurrencies: string[];
+  tradingPairs: string[];
+} = {
   cryptocurrencies: [],
   tradingPairs: [],
+};
+
+const isValidSymbol = (symbol: string) => {
+  return mockCryptocurrencyData.some((crypto) => crypto.symbol === symbol);
+};
+
+const isValidTradingPair = (pair: string) => {
+  const [base, quote] = pair.split('-');
+  return isValidSymbol(base) && isValidSymbol(quote) && base !== quote;
 };
 
 export const resolvers = {
@@ -40,20 +52,33 @@ export const resolvers = {
 
       return filteredPairs;
     },
-    userPreferences: () => userPreferences,
+    userPreferences: () => inMemoryUserPreferences,
   },
   Mutation: {
-    saveUserPreferences: (_: any, { input }: { input: any }) => {
-      const { cryptocurrencies, tradingPairs } = input;
-      if (cryptocurrencies) {
-        userPreferences.cryptocurrencies = cryptocurrencies;
+    saveUserPreferences: (
+      _: any,
+      { input }: { input: { userPreferences: string[] } }
+    ) => {
+      const { userPreferences } = input;
+      for (const preference of userPreferences) {
+        if (preference.split('-').length === 1) {
+          if (!isValidSymbol(preference)) {
+            throw new Error(`Invalid cryptocurrency symbol: ${preference}`);
+          }
+
+          inMemoryUserPreferences.cryptocurrencies.push(preference);
+        } else if (preference.split('-').length === 2) {
+          if (!isValidTradingPair(preference)) {
+            throw new Error(`Invalid trading pair: ${preference}`);
+          }
+
+          inMemoryUserPreferences.tradingPairs.push(preference);
+        } else {
+          throw new Error(`Invalid input: ${preference}`);
+        }
       }
 
-      if (tradingPairs) {
-        userPreferences.tradingPairs = tradingPairs;
-      }
-
-      return userPreferences;
+      return inMemoryUserPreferences;
     },
   },
   Subscription: {

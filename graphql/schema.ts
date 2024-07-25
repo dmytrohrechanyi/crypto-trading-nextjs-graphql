@@ -36,8 +36,7 @@ export const typeDefs = gql`
   }
 
   input SaveUserPreferenceInput {
-    cryptocurrencies: [String!]
-    tradingPairs: [String!]
+    userPreferences: [String!]!
   }
 
   type Query {
