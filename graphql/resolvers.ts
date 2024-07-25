@@ -1,10 +1,21 @@
 import { pubsub } from './pubsub';
 import { mockCryptocurrencyData, mockTradingPairsData } from '../mockData';
 
+let userPreferences: string[] = [];
+
 export const resolvers = {
   Query: {
     cryptocurrencies: () => mockCryptocurrencyData,
     tradingPairs: () => mockTradingPairsData,
+  },
+  Mutation: {
+    saveUserPreferences: (
+      _: any,
+      { preferences }: { preferences: string[] }
+    ) => {
+      userPreferences = preferences;
+      return true;
+    },
   },
   Subscription: {
     priceUpdated: {

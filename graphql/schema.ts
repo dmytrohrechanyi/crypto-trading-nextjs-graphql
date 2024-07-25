@@ -28,6 +28,10 @@ export const typeDefs = gql`
     tradingPairs: [TradingPair!]!
   }
 
+  type Mutation {
+    saveUserPreferences(preferences: [String!]!): Boolean
+  }
+
   type Subscription {
     priceUpdated: Cryptocurrency
   }
