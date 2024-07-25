@@ -30,13 +30,24 @@ export const typeDefs = gql`
     maxPrice: Float
   }
 
+  type UserPreference {
+    cryptocurrencies: [String!]!
+    tradingPairs: [String!]!
+  }
+
+  input SaveUserPreferenceInput {
+    cryptocurrencies: [String!]
+    tradingPairs: [String!]
+  }
+
   type Query {
     cryptocurrencies: [Cryptocurrency!]!
     tradingPairs(filter: TradingPairFilterInput): [TradingPair!]!
+    userPreferences: UserPreference
   }
 
   type Mutation {
-    saveUserPreferences(preferences: [String!]!): Boolean
+    saveUserPreferences(input: SaveUserPreferenceInput!): UserPreference
   }
 
   type Subscription {

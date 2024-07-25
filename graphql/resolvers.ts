@@ -1,7 +1,10 @@
 import { pubsub } from './pubsub';
 import { mockCryptocurrencyData, mockTradingPairsData } from '../mockData';
 
-let userPreferences: string[] = [];
+const userPreferences = {
+  cryptocurrencies: [],
+  tradingPairs: [],
+};
 
 export const resolvers = {
   Query: {
@@ -37,14 +40,20 @@ export const resolvers = {
 
       return filteredPairs;
     },
+    userPreferences: () => userPreferences,
   },
   Mutation: {
-    saveUserPreferences: (
-      _: any,
-      { preferences }: { preferences: string[] }
-    ) => {
-      userPreferences = preferences;
-      return true;
+    saveUserPreferences: (_: any, { input }: { input: any }) => {
+      const { cryptocurrencies, tradingPairs } = input;
+      if (cryptocurrencies) {
+        userPreferences.cryptocurrencies = cryptocurrencies;
+      }
+
+      if (tradingPairs) {
+        userPreferences.tradingPairs = tradingPairs;
+      }
+
+      return userPreferences;
     },
   },
   Subscription: {
